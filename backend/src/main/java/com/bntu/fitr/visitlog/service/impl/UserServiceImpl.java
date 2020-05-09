@@ -1,6 +1,8 @@
 package com.bntu.fitr.visitlog.service.impl;
 
+import com.bntu.fitr.visitlog.entity.Classes;
 import com.bntu.fitr.visitlog.entity.Users;
+import com.bntu.fitr.visitlog.repository.GroupRepository;
 import com.bntu.fitr.visitlog.repository.UserRepository;
 import com.bntu.fitr.visitlog.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,10 +16,12 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
 
     private UserRepository userRepository;
+    private GroupRepository groupRepository;
 
     @Autowired
-    public UserServiceImpl(UserRepository userRepository) {
+    public UserServiceImpl(UserRepository userRepository, GroupRepository groupRepository) {
         this.userRepository = userRepository;
+        this.groupRepository = groupRepository;
     }
 
     public Users getUserByLogin(String login) {

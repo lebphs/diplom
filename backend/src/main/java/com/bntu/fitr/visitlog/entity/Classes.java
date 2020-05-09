@@ -10,7 +10,7 @@ import javax.persistence.Entity;
 @Data
 @NoArgsConstructor
 @Entity
-public class Groups extends BaseEntity{
+public class Classes extends BaseEntity {
 
     private String name;
 

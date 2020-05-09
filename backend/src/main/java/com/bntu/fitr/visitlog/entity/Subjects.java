@@ -4,17 +4,22 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
 @NoArgsConstructor
 @Entity
-public class Subjects extends BaseEntity{
+public class Subjects extends BaseEntity {
 
-    private Integer disciplinesId;
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Disciplines discipline;
 
-    private Integer groupId;
+    @OneToOne(cascade = CascadeType.ALL)
+    private Classes group;
 
-    private Integer teacherId;
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Users teacher;
 }

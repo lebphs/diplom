@@ -2,7 +2,7 @@ package com.bntu.fitr.visitlog.entity;
 
 import lombok.*;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
 
 @Getter
 @Setter
@@ -12,7 +12,8 @@ import javax.persistence.Entity;
 @Entity
 public class Journal extends BaseEntity {
 
-    private Integer subjectId;
+    @OneToOne(cascade = CascadeType.ALL)
+    private Subjects subject;
 
     private Integer mark;
 
@@ -20,5 +21,4 @@ public class Journal extends BaseEntity {
 
     private String comment;
 
-    private Integer userId;
 }

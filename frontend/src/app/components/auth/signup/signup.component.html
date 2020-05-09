@@ -1,0 +1,46 @@
+<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
+  <mat-card class="box">
+    <mat-card-header>
+      <mat-card-title>Register</mat-card-title>
+    </mat-card-header>
+
+    <form [formGroup]="form" class="example-form" (ngSubmit)="onSubmit()">
+
+      <mat-card-content>
+        <mat-form-field class="example-full-width">
+          <input matInput  id="login" formControlName="login" placeholder="Login">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="First Name" formControlName="firstName">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Last Name" formControlName="lastName">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input matInput type="password" placeholder="Password" formControlName="password">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Choose a role...</mat-label>
+          <mat-select [(ngModel)]="selectedValue" formControlName="role" (selectionChange)="changeOption($event.value)">
+            <mat-option [value]="role" *ngFor="let role of roles">{{role.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" *ngIf="isShow">
+          <input matInput type="number" placeholder="Group" formControlName="group">
+        </mat-form-field>
+
+        <p>Form value: {{ form.value | json }}</p>
+
+<!--        <p>Form value: {{ selected.name }}</p>-->
+      </mat-card-content>
+      <button mat-stroked-button color="accent" class="btn-block" >Register</button>
+
+    </form>
+  </mat-card>
+</div>

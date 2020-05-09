@@ -1,14 +1,14 @@
-package com.bntu.fitr.visitlog.controller;
+package com.bntu.fitr.visitlog.fapi.controller;
 
-import com.bntu.fitr.visitlog.entity.Users;
-import com.bntu.fitr.visitlog.service.UserService;
+import com.bntu.fitr.visitlog.fapi.models.User;
+import com.bntu.fitr.visitlog.fapi.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "api/v1/users")
+@RequestMapping(value = "api/users")
 public class UserController {
 
     private final UserService userService;
@@ -20,17 +20,18 @@ public class UserController {
 
 
     @GetMapping
-    public List<Users> getAllUsers() {
-        return userService.getAll();
+    public List<User> getAllUsers() {
+        return userService.findAll();
     }
 
     @GetMapping(value = "/login")
-    public Users getUserByLogin(@RequestParam String login){
-        return userService.getUserByLogin(login);
+    public User getUserByLogin(@RequestParam String login) {
+        return userService.findByLogin(login);
     }
 
     @PostMapping
-    public Users create(@RequestBody Users user){
+    public User createUser(@RequestBody User user){
         return userService.create(user);
     }
+
 }
