@@ -1,14 +1,20 @@
-import {Subjects} from "./subjects.model";
-
 export class Journal {
-  constructor(
-    public id: string,
-    public subject: Subjects,
-    public mark: number,
-    public truancy: number,
-    public comment: string
-  ) {
+
+  id: string;
+  subjectId: string;
+  mark: string;
+  truancy: string;
+  comment: string;
+  classDate: Date;
+  studentId: string;
+  firstName: string;
+  lastName: string;
+  groupId: string;
+  groupName: string;
+
+  constructor() {
   }
+
 
 }
 

@@ -11,4 +11,8 @@ public interface UserService {
     List<Users> getAll();
 
     Users create(Users user);
+
+    Users update(Users user);
+
+    List<Users> getStudentsByGroupId(String groupId);
 }

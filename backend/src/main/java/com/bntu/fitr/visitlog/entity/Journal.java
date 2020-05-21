@@ -3,6 +3,7 @@ package com.bntu.fitr.visitlog.entity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Getter
 @Setter
@@ -12,13 +13,18 @@ import javax.persistence.*;
 @Entity
 public class Journal extends BaseEntity {
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL)
     private Subjects subject;
 
     private Integer mark;
 
-    private Integer truancy;
+    private String  truancy;
 
     private String comment;
+
+    private Date classDate;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Users student;
 
 }

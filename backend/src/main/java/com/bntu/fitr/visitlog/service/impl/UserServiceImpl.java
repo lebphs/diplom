@@ -35,6 +35,16 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Users create(Users user){
+        user.setGroup(groupRepository.findById(user.getGroup().getId()).get());
         return (Users) userRepository.save(user);
+    }
+
+    @Override
+    public Users update(Users user){
+        return (Users) userRepository.save(user);
+    }
+
+    @Override
+    public List<Users> getStudentsByGroupId(String groupId){return  userRepository.findStudentsByGroupId(new Long(groupId));
     }
 }

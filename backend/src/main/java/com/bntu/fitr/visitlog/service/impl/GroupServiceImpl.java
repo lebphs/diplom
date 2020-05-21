@@ -5,8 +5,12 @@ import com.bntu.fitr.visitlog.repository.GroupRepository;
 import com.bntu.fitr.visitlog.service.GroupService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
+@Transactional
 public class GroupServiceImpl implements GroupService {
 
     private GroupRepository repository;
@@ -22,5 +26,9 @@ public class GroupServiceImpl implements GroupService {
 
     public Classes createGroup(Classes classes){
         return repository.save(classes);
+    }
+
+    public List<Classes> getAll(){
+        return (List<Classes>) repository.findAll();
     }
 }

@@ -33,4 +33,14 @@ public class UserController {
     public Users create(@RequestBody Users user){
         return userService.create(user);
     }
+
+    @PutMapping
+    public Users update(@RequestBody Users user){
+        return userService.update(user);
+    }
+
+    @GetMapping(value = "/students")
+    public List<Users> getStudentsByGroupId(@RequestParam String groupId){
+        return userService.getStudentsByGroupId(groupId);
+    }
 }

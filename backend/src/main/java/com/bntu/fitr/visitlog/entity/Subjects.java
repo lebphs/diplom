@@ -17,9 +17,9 @@ public class Subjects extends BaseEntity {
     @ManyToOne(cascade = CascadeType.ALL)
     private Disciplines discipline;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = {CascadeType.REFRESH,CascadeType.DETACH, CascadeType.PERSIST, CascadeType.MERGE})
     private Classes group;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = {CascadeType.REFRESH,CascadeType.DETACH, CascadeType.PERSIST, CascadeType.MERGE})
     private Users teacher;
 }

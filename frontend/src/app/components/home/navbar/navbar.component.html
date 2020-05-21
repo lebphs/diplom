@@ -1,0 +1,13 @@
+<nav class="navbar navbar-light teal lighten-4 dark-teal-text">
+  <button class="navbar-toggler toggler-example" style="border-color:#ffffff" type="button" data-toggle="collapse"
+          data-target="#navbarSupportedContent1"
+          aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation"
+          (click)="toggleShow()">
+    <span class="navbar-toggler-icon"></span></button>
+  <a class="navbar-brand" style="font-size: 25pt;color:#ffffff;" href="/home">БНТУ</a>
+
+  <div class="btn-group">
+    <a class="nav-link" [routerLink]="'/subjects'" style="color:#ffffff;">Home <span class="sr-only">(current)</span></a>
+    <a class="nav-link" [routerLink]="'/login'" (click)="onLogout()" style="color:#ffffff;">Log out</a>
+  </div>
+</nav>

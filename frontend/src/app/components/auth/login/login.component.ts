@@ -32,10 +32,11 @@ export class LoginComponent implements OnInit {
       .subscribe((user: User) => {
         if (user.password === formData.password) {
           window.localStorage.setItem('user', JSON.stringify(user));
+          console.log(user.role.name);
           if (user.role.name === 'STUDENTS') {
             this.router.navigate(['/home']);
           } else {
-            this.router.navigate(['/home']);
+            this.router.navigate(['/subjects']);
           }
         }
 

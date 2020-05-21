@@ -15,7 +15,7 @@ public class User{
 
     private String password;
 
-    private Role role;
+    private String role;
 
     private String firstName;
 
@@ -23,6 +23,6 @@ public class User{
 
     private String patronymic;
 
-    private Group group;
+    private String group;
 
 }

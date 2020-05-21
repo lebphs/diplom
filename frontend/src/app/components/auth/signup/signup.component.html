@@ -31,16 +31,22 @@
           </mat-select>
         </mat-form-field>
 
-        <mat-form-field class="example-full-width" *ngIf="isShow">
-          <input matInput type="number" placeholder="Group" formControlName="group">
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Choose a group...</mat-label>
+          <mat-select formControlName="group">
+            <mat-option [value]="group" *ngFor="let group of groups">{{group.name}}
+            </mat-option>
+          </mat-select>
         </mat-form-field>
 
-        <p>Form value: {{ form.value | json }}</p>
 
-<!--        <p>Form value: {{ selected.name }}</p>-->
+<!--        <p>Form value: {{ form.value | json }}</p>-->
       </mat-card-content>
       <button mat-stroked-button color="accent" class="btn-block" >Register</button>
-
+      <p class="message">
+        Already registered? <a [routerLink]="'/login'">Sign In</a>
+      </p>
     </form>
   </mat-card>
 </div>
