@@ -4,6 +4,8 @@
 
   <mat-form-field>
     <input matInput placeholder="Name" formControlName="name"/>
+    <mat-error *ngIf="form.get('name').errors?.required">Поле Name не может быть пустым. </mat-error>
+    <mat-error *ngIf="form.get('name').errors?.minlength || form.get('name').errors?.maxlength">Введите корректный Name (от 2 до 50 символов). </mat-error>
   </mat-form-field>
 
   <mat-form-field class="example-full-width">
@@ -12,13 +14,8 @@
       <mat-option [value]="group" *ngFor="let group of groups">{{group.name}}
       </mat-option>
     </mat-select>
+    <mat-error *ngIf="form.get('group').errors?.required">Выберите одну из групп </mat-error>
   </mat-form-field>
-
-<!--  <mat-form-field>-->
-<!--    <input matInput [matDatepicker]="myDatepicker" formControlName="lessonDate">-->
-<!--    <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>-->
-<!--    <mat-datepicker #myDatepicker></mat-datepicker>-->
-<!--  </mat-form-field>-->
 
 </mat-dialog-content>
 

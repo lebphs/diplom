@@ -18,7 +18,6 @@ export class UserComponent implements OnInit {
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
 
-
   constructor(
     private userService: UserService
   ) { }
@@ -42,50 +41,3 @@ export class UserComponent implements OnInit {
 
 }
 
-// export class UserDataSource implements DataSource<User> {
-//
-//   private userSubject = new BehaviorSubject<User[]>([]);
-//   private loadingSubject = new BehaviorSubject<boolean>(false);
-//   public loading$ = this.loadingSubject.asObservable();
-//
-//   constructor(private userService: UserService, private paginator: MatPaginator, private router: Router) {
-//
-//   }
-//
-//   connect(collectionViewer: CollectionViewer): Observable<User[]> {
-//     return this.userSubject.asObservable();
-//   }
-//
-//   disconnect(collectionViewer: CollectionViewer): void {
-//     this.userSubject.complete();
-//     this.loadingSubject.complete();
-//   }
-//
-//   loadUsers() {
-//     this.loadingSubject.next(true);
-//     this.userSubject.next([]);
-//     timer(500).subscribe(
-//       val => {
-//         this.userService.getAllUsers()
-//           .pipe(
-//             catchError((error) => this.router.navigateByUrl('/error/' + error.status)),
-//             finalize(() => this.loadingSubject.next(false))
-//           )
-//           .subscribe(page => {
-//             this.paginator.length = page['totalElements'];
-//             this.userSubject.next(page['content'])
-//           });
-//
-//         // getPageOfTasksForUser(type, fieldSort, directionSort, page, size, search, idProject).pipe(
-//         //   catchError((error) => this.router.navigateByUrl('/error/' + error.status)),
-//         //   finalize(() => this.loadingSubject.next(false))
-//         // ).subscribe(
-//         //   page => {
-//         //     this.paginator.length = page['totalElements'];
-//         //     this.tasksSubject.next(page['content'])
-//         //   }
-//         // )
-//       }
-//     )
-//   }
-// }

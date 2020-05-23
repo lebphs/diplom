@@ -77,7 +77,7 @@
                 </ng-template>
                 <ng-template editMode>
                   <mat-form-field class="example-full-width">
-                    <input matInput [formControl]="getControl(index, day + '_mark')">
+                    <input matInput type="number" [formControl]="getControl(index, day + '_mark')">
                   </mat-form-field>
                 </ng-template>
               </editable>
@@ -93,7 +93,7 @@
                 </ng-template>
                 <ng-template editMode>
                   <mat-form-field class="example-full-width">
-                    <input matInput [formControl]="getControl(index, day + '_truancy')">
+                    <input matInput type="number" [formControl]="getControl(index, day + '_truancy')">
                   </mat-form-field>
                 </ng-template>
               </editable>

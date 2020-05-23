@@ -157,7 +157,9 @@ export class SubjectsComponent implements OnInit {
   }
 
   delete(row) {
-    this.subjectService.deleteSubject(row.id).subscribe(s => this.loadData());
+    if(confirm("Are you sure to delete subject: " + row.discipline)) {
+      this.subjectService.deleteSubject(row.id).subscribe(s => this.loadData());
+    }
   }
 
 

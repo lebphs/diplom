@@ -1,5 +1,5 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {GroupService} from "../../../../services/group.service";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 
@@ -27,15 +27,15 @@ export class EditProfileComponent implements OnInit {
 
   ngOnInit() {
 
-    this.form = this.fb.group({
-      firstName: ["", []],
-      lastName: ["", []],
+    this.form = new FormGroup({
+      'firstName': new FormControl(null, [Validators.required, Validators.minLength(3), Validators.maxLength(50)]),
+      'lastName': new FormControl(null, [Validators.required, Validators.minLength(3), Validators.maxLength(50)]),
     });
 
   }
 
   save() {
-    this.dialogRef.close(this.form.value);
+    this.dialogRef.close(this.form.valid ? this.form.value : null);
   }
 
   close() {

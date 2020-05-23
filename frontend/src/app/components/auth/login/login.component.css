@@ -7,3 +7,6 @@ form .message a {
   color: #4CAF50;
   text-decoration: none;
 }
+mat-form-field {
+  padding-bottom: 18px;
+}

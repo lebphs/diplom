@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup} from "@angular/forms";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {UserService} from "../../../services/user.service";
 import {Router} from "@angular/router";
 import {User} from "../../../models/user.model";
@@ -20,8 +20,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.form = new FormGroup({
-      'login': new FormControl(),
-      'password': new FormControl(),
+      'login': new FormControl(null, [Validators.required, Validators.minLength(3), Validators.maxLength(50)]),
+      'password': new FormControl(null, [Validators.required, Validators.minLength(3), Validators.maxLength(50)]),
     });
   }
 
@@ -41,6 +41,10 @@ export class LoginComponent implements OnInit {
         }
 
       });
+  }
+
+  getForm(){
+    return this.form;
   }
 
 }

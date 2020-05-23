@@ -3,6 +3,10 @@
 }
 
 textarea {
-  height: 100px;
+  height: 150px;
   resize: vertical;
+}
+
+mat-form-field{
+  padding-bottom: 18px;
 }

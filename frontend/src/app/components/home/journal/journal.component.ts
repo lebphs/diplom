@@ -7,7 +7,7 @@ import {User} from "../../../models/user.model";
 import {MatTableDataSource} from "@angular/material/table";
 import {DatePipe} from "@angular/common";
 import {UserTable} from "../../../models/user-table.model";
-import {FormArray, FormControl, FormGroup} from "@angular/forms";
+import {FormArray, FormControl, FormGroup, Validators} from "@angular/forms";
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {AddLessonComponent} from "../dialog/add-lesson/add-lesson.component";
 import {EditProfileComponent} from "../dialog/edit-profile/edit-profile.component";
@@ -141,9 +141,9 @@ export class JournalComponent implements OnInit {
       const formGroup = new FormGroup({});
       this.daysColumns.map(d => {
         if (d.includes("mark")) {
-          formGroup.registerControl(d, new FormControl(s.marks.get(d.replace("_mark", ""))));
+          formGroup.registerControl(d, new FormControl(s.marks.get(d.replace("_mark", "")), [Validators.min(0), Validators.max(10)]));
         } else {
-          formGroup.registerControl(d, new FormControl(s.truancies.get(d.replace("_truancy", ""))));
+          formGroup.registerControl(d, new FormControl(s.truancies.get(d.replace("_truancy", "")), [Validators.min(1), Validators.max(2)]));
         }
       });
       return formGroup;

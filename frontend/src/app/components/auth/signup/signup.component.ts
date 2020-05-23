@@ -40,12 +40,12 @@ export class SignupComponent implements OnInit {
       });
 
     this.form = new FormGroup({
-      'login': new FormControl(),
-      'password': new FormControl(),
-      'firstName': new FormControl(),
-      'lastName': new FormControl(),
-      'role': new FormControl(),
-      'group': new FormControl()
+      'login': new FormControl(null,[Validators.required, Validators.minLength(3), Validators.maxLength(50)]),
+      'password': new FormControl(null, [Validators.required, Validators.minLength(3), Validators.maxLength(50)]),
+      'firstName': new FormControl(null, [Validators.required, Validators.minLength(3), Validators.maxLength(50)]),
+      'lastName': new FormControl(null, [Validators.required, Validators.minLength(3), Validators.maxLength(50)]),
+      'role': new FormControl(null, [Validators.required]),
+      'group': new FormControl(null)
     });
   }
 
@@ -53,14 +53,16 @@ export class SignupComponent implements OnInit {
     const {login, password, firstName, lastName, role, group} = this.form.value;
     const user = new User("", login, password, firstName, lastName, null, role, group);
 
-    this.userService.createUser(user)
-      .subscribe(() => {
-        this.router.navigate(['/login'], {
-          queryParams: {
-            nowCanLogin: true
-          }
+    if(this.form.valid) {
+      this.userService.createUser(user)
+        .subscribe(() => {
+          this.router.navigate(['/login'], {
+            queryParams: {
+              nowCanLogin: true
+            }
+          });
         });
-      });
+    }
   }
 
   changeOption(data){

@@ -1,5 +1,5 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {Group} from "../../../../models/group.model";
 import {GroupService} from "../../../../services/group.service";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
@@ -29,14 +29,13 @@ export class UpdateSubjectComponent implements OnInit {
 
   ngOnInit() {
 
-    this.form = this.fb.group({
-      name: ["", []],
+    this.form = new FormGroup({
+      'name': new FormControl(null, [Validators.required, Validators.minLength(2), Validators.maxLength(50)]),
     });
-
   }
 
   save() {
-    this.dialogRef.close(this.form.value);
+    this.dialogRef.close(this.form.valid ? this.form.value : null);
   }
 
   close() {

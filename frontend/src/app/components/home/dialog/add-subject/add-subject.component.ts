@@ -1,5 +1,5 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {GroupService} from "../../../../services/group.service";
 import {Group} from "../../../../models/group.model";
@@ -33,15 +33,15 @@ export class AddSubjectComponent implements OnInit {
   ngOnInit() {
     this.groupService.getAllGroups().subscribe(g=> this.groups = g as Group[]);
 
-    this.form = this.fb.group({
-      name: ["", []],
-      group: ["", []]
+    this.form = new FormGroup({
+      'name': new FormControl(null, [Validators.required, Validators.minLength(2), Validators.maxLength(50)]),
+      'group': new FormControl(null, [Validators.required])
     });
 
   }
 
   save() {
-    this.dialogRef.close(this.form.value);
+    this.dialogRef.close(this.form.valid ? this.form.value : null);
   }
 
   close() {

@@ -9,13 +9,17 @@
       <mat-card-content>
         <mat-form-field class="example-full-width">
           <input matInput placeholder="Login" formControlName="login">
+          <mat-error *ngIf="form.get('login').errors?.required">Поле login не может быть пустым. </mat-error>
+          <mat-error *ngIf="form.get('login').errors?.minlength || form.get('login').errors?.maxlength">Введите корректный login (от 3 до 50 символов). </mat-error>
         </mat-form-field>
 
         <mat-form-field class="example-full-width">
           <input matInput type="password" placeholder="Password" formControlName="password">
+          <mat-error *ngIf="form.get('password').errors?.required">Поле password не может быть пустым. </mat-error>
+          <mat-error *ngIf="form.get('password').errors?.minlength || form.get('password').errors?.maxlength">Введите корректный пароль(от 3 до 50 символов). </mat-error>
         </mat-form-field>
       </mat-card-content>
-      <button mat-stroked-button color="accent" class="btn-block">Log in</button>
+      <button mat-stroked-button color="accent" class="btn-block" [disabled]="form.invalid" >Log in</button>
       <p class="message">
         Not registered? <a [routerLink]="'/register'" >Create an account</a>
       </p>
