@@ -7,6 +7,8 @@ import {Role} from "../../../models/role.model";
 import {RoleService} from "../../../services/role.service";
 import {Group} from "../../../models/group.model";
 import {GroupService} from "../../../services/group.service";
+import {TranslateService} from "@ngx-translate/core";
+import {environment} from "../../../../environments/environment";
 
 @Component({
   selector: 'app-signup',
@@ -16,6 +18,7 @@ import {GroupService} from "../../../services/group.service";
 export class SignupComponent implements OnInit {
 
   selectedValue:Role;
+  selectedLang: string = "ru";
   isShow:boolean;
   form:FormGroup;
   roles: Role[];
@@ -26,9 +29,12 @@ export class SignupComponent implements OnInit {
     private groupService: GroupService,
     private userService: UserService,
     private roleService: RoleService,
+    private translateService: TranslateService,
     private router: Router  ) { }
 
   ngOnInit() {
+    this.selectedLang = window.localStorage.getItem('locale');
+    this.translateService.use(this.selectedLang);
     this.roleService.getAllRoles()
       .subscribe(role => {
         this.roles = role as Role[];
@@ -70,4 +76,8 @@ export class SignupComponent implements OnInit {
     this.isShow = data.name == "STUDENT";
   }
 
+  changeLocale(locale){
+    window.localStorage.setItem('locale', locale);
+    return this.translateService.use(locale);
+  }
 }

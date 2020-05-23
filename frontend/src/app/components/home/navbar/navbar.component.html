@@ -7,7 +7,7 @@
   <a class="navbar-brand" style="font-size: 25pt;color:#ffffff;" href="/home">БНТУ</a>
 
   <div class="btn-group">
-    <a class="nav-link" [routerLink]="'/subjects'" style="color:#ffffff;">Home <span class="sr-only">(current)</span></a>
-    <a class="nav-link" [routerLink]="'/login'" (click)="onLogout()" style="color:#ffffff;">Log out</a>
+    <a class="nav-link" [routerLink]="'/subjects'" style="color:#ffffff;"> {{ 'ACTION.HOME' | translate }} <span class="sr-only">(current)</span></a>
+    <a class="nav-link" [routerLink]="'/login'" (click)="onLogout()" style="color:#ffffff;"> {{ 'ACTION.LOG_OUT' | translate }}</a>
   </div>
 </nav>

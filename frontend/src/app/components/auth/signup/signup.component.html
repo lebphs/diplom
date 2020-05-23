@@ -1,38 +1,54 @@
 <div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
   <mat-card class="box">
     <mat-card-header>
-      <mat-card-title>Register</mat-card-title>
+      <mat-card-title>{{ 'SIGN_IN.TITLE' | translate }}</mat-card-title>
     </mat-card-header>
 
     <form [formGroup]="form" class="example-form" (ngSubmit)="onSubmit()">
 
       <mat-card-content>
         <mat-form-field class="example-full-width">
-          <input matInput  id="login" formControlName="login" placeholder="Login">
-          <mat-error *ngIf="form.get('login').errors?.required">Поле Login не может быть пустым. </mat-error>
-          <mat-error *ngIf="form.get('login').errors?.minlength || form.get('login').errors?.maxlength">Введите корректный Login (от 3 до 50 символов). </mat-error>
+          <input matInput  id="login" formControlName="login" placeholder="{{ 'SIGN_IN.INPUT.LOGIN' | translate }}">
+          <mat-error *ngIf="form.get('login').errors?.required">
+            {{ 'SIGN_IN.INPUT.LOGIN' | translate }} {{ 'ERROR_MESSAGES.EMPTY_FIELD' | translate }}
+          </mat-error>
+          <mat-error *ngIf="form.get('login').errors?.minlength || form.get('login').errors?.maxlength">
+            {{ 'SIGN_IN.INPUT.LOGIN' | translate }} {{ 'ERROR_MESSAGES.INCORRECT_LENGTH' | translate }}
+          </mat-error>
         </mat-form-field>
 
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="First Name" formControlName="firstName">
-          <mat-error *ngIf="form.get('firstName').errors?.required">Поле first name не может быть пустым. </mat-error>
-          <mat-error *ngIf="form.get('firstName').errors?.minlength || form.get('firstName').errors?.maxlength">Введите корректный first name (от 3 до 50 символов). </mat-error>
+          <input matInput placeholder="{{ 'SIGN_IN.INPUT.FIRST_NAME' | translate }}" formControlName="firstName">
+          <mat-error *ngIf="form.get('firstName').errors?.required">
+            {{ 'SIGN_IN.INPUT.FIRST_NAME' | translate }} {{ 'ERROR_MESSAGES.EMPTY_FIELD' | translate }}
+          </mat-error>
+          <mat-error *ngIf="form.get('firstName').errors?.minlength || form.get('firstName').errors?.maxlength">
+            {{ 'SIGN_IN.INPUT.FIRST_NAME' | translate }} {{ 'ERROR_MESSAGES.INCORRECT_LENGTH' | translate }}
+          </mat-error>
         </mat-form-field>
 
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="Last Name" formControlName="lastName">
-          <mat-error *ngIf="form.get('lastName').errors?.required">Поле Last Name не может быть пустым. </mat-error>
-          <mat-error *ngIf="form.get('lastName').errors?.minlength || form.get('lastName').errors?.maxlength">Введите корректный Last Name (от 3 до 50 символов). </mat-error>
+          <input matInput placeholder=" {{ 'SIGN_IN.INPUT.LAST_NAME' | translate }}" formControlName="lastName">
+          <mat-error *ngIf="form.get('lastName').errors?.required">
+            {{ 'SIGN_IN.INPUT.LAST_NAME' | translate }} {{ 'ERROR_MESSAGES.EMPTY_FIELD' | translate }}
+          </mat-error>
+          <mat-error *ngIf="form.get('lastName').errors?.minlength || form.get('lastName').errors?.maxlength">
+            {{ 'SIGN_IN.INPUT.LAST_NAME' | translate }} {{ 'ERROR_MESSAGES.INCORRECT_LENGTH' | translate }}
+          </mat-error>
         </mat-form-field>
 
         <mat-form-field class="example-full-width">
-          <input matInput type="password" placeholder="Password" formControlName="password">
-          <mat-error *ngIf="form.get('password').errors?.required">Поле Password не может быть пустым. </mat-error>
-          <mat-error *ngIf="form.get('password').errors?.minlength || form.get('password').errors?.maxlength">Введите корректный Password (от 3 до 50 символов). </mat-error>
+          <input matInput type="password" placeholder="{{ 'SIGN_IN.INPUT.PASSWORD' | translate }}" formControlName="password">
+          <mat-error *ngIf="form.get('password').errors?.required">
+            {{ 'SIGN_IN.INPUT.PASSWORD' | translate }} {{ 'ERROR_MESSAGES.EMPTY_FIELD' | translate }}
+          </mat-error>
+          <mat-error *ngIf="form.get('password').errors?.minlength || form.get('password').errors?.maxlength">
+            {{ 'SIGN_IN.INPUT.PASSWORD' | translate }} {{ 'ERROR_MESSAGES.INCORRECT_LENGTH' | translate }}
+          </mat-error>
         </mat-form-field>
 
         <mat-form-field class="example-full-width">
-          <mat-label>Choose a role...</mat-label>
+          <mat-label>{{ 'SIGN_IN.INPUT.ROLE' | translate }}</mat-label>
           <mat-select [(ngModel)]="selectedValue" formControlName="role" (selectionChange)="changeOption($event.value)">
             <mat-option [value]="role" *ngFor="let role of roles">{{role.name}}
             </mat-option>
@@ -41,17 +57,22 @@
 
 
         <mat-form-field class="example-full-width" *ngIf="isShow">
-          <mat-label>Choose a group...</mat-label>
+          <mat-label>{{ 'SIGN_IN.INPUT.GROUP' | translate }}</mat-label>
           <mat-select formControlName="group">
             <mat-option [value]="group" *ngFor="let group of groups">{{group.name}}
             </mat-option>
           </mat-select>
         </mat-form-field>
       </mat-card-content>
-      <button mat-stroked-button color="accent" class="btn-block" >Register</button>
+      <button mat-stroked-button color="accent" class="btn-block" >{{ 'SIGN_IN.BUTTON.REGISTER' | translate }}</button>
       <p class="message">
-        Already registered? <a [routerLink]="'/login'">Sign In</a>
+        {{ 'SIGN_IN.MESSAGE.ALREADY_REGISTERED' | translate }} <a [routerLink]="'/login'">{{ 'SIGN_IN.LINK.LOGIN' | translate }}</a>
       </p>
     </form>
+    <mat-select [(value)] = "selectedLang" (selectionChange)="changeLocale($event.value)">
+      <mat-label>{{ 'LANGUAGE_TAG.NAME' | translate }}</mat-label>
+      <mat-option value="ru">{{ 'LANGUAGE_TAG.RUSSIAN' | translate }}</mat-option>
+      <mat-option value="en">{{ 'LANGUAGE_TAG.ENGLISH' | translate }}</mat-option>
+    </mat-select>
   </mat-card>
 </div>

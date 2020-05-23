@@ -1,4 +1,4 @@
-import {Component, OnInit, Output, ViewChild} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {User} from "../../../models/user.model";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
@@ -8,13 +8,13 @@ import {SubjectService} from "../../../services/subject.service";
 import {Router} from "@angular/router";
 import {JournalService} from "../../../services/journal.service";
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
-import {AddLessonComponent} from "../dialog/add-lesson/add-lesson.component";
-import {Journal} from "../../../models/journal.model";
 import {AddSubjectComponent} from "../dialog/add-subject/add-subject.component";
 import {SelectionModel} from "@angular/cdk/collections";
 import {UpdateSubjectComponent} from "../dialog/update-subject/update-subject.component";
 import {EditProfileComponent} from "../dialog/edit-profile/edit-profile.component";
 import {UserService} from "../../../services/user.service";
+import {TranslateService} from "@ngx-translate/core";
+import {environment} from "../../../../environments/environment";
 
 @Component({
   selector: 'app-subjects',
@@ -23,7 +23,7 @@ import {UserService} from "../../../services/user.service";
 })
 export class SubjectsComponent implements OnInit {
 
-  teacher: User;
+  selectedLang: string = "ru";
   isSelectedSubject: boolean = true;
   user: User;
   isShown: boolean = true;
@@ -42,14 +42,17 @@ export class SubjectsComponent implements OnInit {
     public dialog: MatDialog,
     private journalService: JournalService,
     private router: Router,
-    private subjectService: SubjectService
+    private subjectService: SubjectService,
+    private translateService: TranslateService
   ) {
   }
 
   ngOnInit() {
+    this.translateService.use(environment.defaultLocale);
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
     this.user = JSON.parse(window.localStorage.getItem('user'));
+    this.selectedLang = window.localStorage.getItem('locale');
     this.loadSubject();
   }
 
@@ -160,6 +163,12 @@ export class SubjectsComponent implements OnInit {
     if(confirm("Are you sure to delete subject: " + row.discipline)) {
       this.subjectService.deleteSubject(row.id).subscribe(s => this.loadData());
     }
+  }
+
+  changeLocale(locale){
+    window.localStorage.setItem('locale', locale);
+    this.selectedLang = locale;
+    return this.translateService.use(locale);
   }
 
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
+import {MissingTranslationHandler, MissingTranslationHandlerParams} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-error',
@@ -30,4 +31,10 @@ export class ErrorComponent implements OnInit {
     else return 'Unkown error on server';
   }
 
+}
+
+export class MissingTranslationService implements MissingTranslationHandler {
+  handle(params: MissingTranslationHandlerParams) {
+    return `WARN: '${params.key}' is missing in '${params.translateService.currentLang}' locale`;
+  }
 }

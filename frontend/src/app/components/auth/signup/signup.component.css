@@ -11,3 +11,10 @@ form .message a {
 mat-form-field {
   padding-bottom: 16px;
 }
+
+mat-select {
+  margin: 15px 0 0;
+  color: #b3b3b3;
+  font-size: 12px;
+}
+

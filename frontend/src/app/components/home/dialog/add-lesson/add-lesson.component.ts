@@ -1,7 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {FormBuilder, FormGroup} from "@angular/forms";
-import {JournalService} from "../../../../services/journal.service";
+import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-add-lesson',
@@ -10,18 +10,20 @@ import {JournalService} from "../../../../services/journal.service";
 })
 export class AddLessonComponent implements OnInit {
 
-
+  selectedLang: string = "ru";
   form: FormGroup;
   description:string;
   title:string;
 
   constructor(
+    private translateService: TranslateService,
     private fb: FormBuilder,
     private dialogRef: MatDialogRef<AddLessonComponent>,
-    @Inject(MAT_DIALOG_DATA) data) {
 
+    @Inject(MAT_DIALOG_DATA) data) {
     this.description = data.description;
     this.title = data.title;
+    this.selectedLang = data.selectedLang;
   }
 
   ngOnInit() {
@@ -38,4 +40,8 @@ export class AddLessonComponent implements OnInit {
     this.dialogRef.close();
   }
 
+  changeLocale(locale) {
+    this.selectedLang = locale;
+    return this.translateService.use(locale);
+  }
 }

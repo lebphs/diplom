@@ -1,0 +1,79 @@
+{
+  "LOG_IN": {
+    "TITLE": "Вход",
+    "INPUT": {
+      "LOGIN": "Логин",
+      "PASSWORD": "Пароль"
+    },
+    "MESSAGE":{
+      "NOT_REGISTERED": "Не зарегистрированы?"
+    },
+    "LINK": {
+      "REGISTER": "Создать аккаунт"
+    },
+    "BUTTON": {
+      "LOGIN": "Войти"
+    }
+  },
+  "SIGN_IN": {
+    "TITLE": "Регистрация",
+    "INPUT": {
+      "LOGIN": "Логин",
+      "PASSWORD": "Пароль",
+      "LAST_NAME": "Фамилия",
+      "FIRST_NAME": "Имя",
+      "ROLE": "Выберите роль",
+      "GROUP": "Выберите группу"
+    },
+    "MESSAGE":{
+      "ALREADY_REGISTERED": "Уж зарегистрированы?"
+    },
+    "LINK": {
+      "LOGIN": "Войти в аккаунт"
+    },
+    "BUTTON": {
+      "REGISTER": "Создать"
+    }
+  },
+  "SUBJECTS": {
+    "COLUMNS": {
+      "DISCIPLINE": "Дисциплина",
+      "GROUP": "Группа",
+      "ACTION": "Действие"
+    },
+    "NAME": "Название"
+  },
+  "JOURNAL": {
+    "COLUMNS": {
+      "FIRST_NAME": "Имя",
+      "LAST_NAME": "Фамилия",
+      "MARK": "Оценка",
+      "TRUANCY": "Пропуск"
+    },
+    "CLASS_DATE": "Дата занятия"
+  },
+  "ERROR_MESSAGES": {
+    "EMPTY_FIELD": " не может быть пустым.",
+    "INCORRECT_LENGTH": " ввели некорректно, неоходимо (от 3 до 50 символов)"
+  },
+  "LANGUAGE_TAG": {
+    "NAME": "Язык",
+    "ENGLISH": "Английский",
+    "RUSSIAN": "Русский"
+  },
+  "ACTION": {
+    "EDIT_PROFILE": "Редактировать профиль",
+    "CREATE_SUBJECT": "Создать предмет",
+    "ADD_LESSON": "Добавить урок",
+    "HOME": "Домой",
+    "LOG_OUT": "Выйти",
+    "EXPORT": "Экспортировать",
+    "FILTER": "Фильтр",
+    "CLICK_TO_EDIT": "Кликните для редактироавния",
+    "CLICK_TO_DELETE": "Кликните для удаления",
+    "CLICK_TO_DETAILS": "Кликните для деталей",
+    "CLOSE": "Закрыть",
+    "ADD": "Добавить",
+    "EDIT": "Редактировать"
+  }
+}

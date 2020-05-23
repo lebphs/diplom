@@ -1,0 +1,79 @@
+{
+  "LOG_IN": {
+    "TITLE": "Log in",
+    "INPUT": {
+      "LOGIN": "Login",
+      "PASSWORD": "Password"
+    },
+    "MESSAGE":{
+      "NOT_REGISTERED": "Not registered?"
+    },
+    "LINK": {
+      "REGISTER": "Create an account"
+    },
+    "BUTTON": {
+      "LOGIN": "Log in"
+    }
+  },
+  "SIGN_IN": {
+    "TITLE": "Sign in",
+    "INPUT": {
+      "LOGIN": "Login",
+      "PASSWORD": "Password",
+      "LAST_NAME": "Last Name",
+      "FIRST_NAME": "First Name",
+      "ROLE": "Choose a role",
+      "GROUP": "Choose a group"
+    },
+    "MESSAGE":{
+      "ALREADY_REGISTERED": "Choose a role"
+    },
+    "LINK": {
+      "LOGIN": "Log in"
+    },
+    "BUTTON": {
+      "REGISTER": "Register"
+    }
+  },
+  "SUBJECTS": {
+    "COLUMNS": {
+      "DISCIPLINE": "Discipline",
+      "GROUP": "Group",
+      "ACTION": "Action"
+    },
+    "NAME": "Name"
+  },
+  "JOURNAL": {
+    "COLUMNS": {
+      "FIRST_NAME": "First Name",
+      "LAST_NAME": "Last Name",
+      "MARK": "Mark",
+      "TRUANCY": "Truancy"
+    },
+    "CLASS_DATE": "Class Date"
+  },
+  "ERROR_MESSAGES": {
+    "EMPTY_FIELD": " cannot be empty.",
+    "INCORRECT_LENGTH": " entered incorrectly, necessary (from 3 to 50 characters)"
+  },
+  "LANGUAGE_TAG": {
+    "NAME": "Language",
+    "ENGLISH": "English",
+    "RUSSIAN": "Russian"
+  },
+  "ACTION": {
+    "EDIT_PROFILE": "Edit profile",
+    "CREATE_SUBJECT": "Create subject",
+    "ADD_LESSON": "Add lesson",
+    "HOME": "Home",
+    "LOG_OUT": "Log out",
+    "EXPORT": "Export",
+    "FILTER": "Filter",
+    "CLICK_TO_EDIT": "Click to edit",
+    "CLICK_TO_DELETE": "Click to delete",
+    "CLICK_TO_DETAILS": "Click to details",
+    "CLOSE": "Close",
+    "ADD": "Add",
+    "EDIT": "Edit"
+  }
+}

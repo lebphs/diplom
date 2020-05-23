@@ -1,4 +1,5 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-navbar',
@@ -10,9 +11,12 @@ export class NavbarComponent implements OnInit {
   @Output() show = new EventEmitter<boolean>();
   private isShown: boolean = true;
 
-  constructor() { }
+  @Input() locale:string = "ru";
+
+  constructor(private translateService:TranslateService) { }
 
   ngOnInit() {
+    this.translateService.use(this.locale);
   }
 
   toggleShow() {

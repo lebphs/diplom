@@ -8,17 +8,22 @@
       <span class="position">{{user.role.name}}</span>
     </div>
     <div class="list-group list-group-flush">
-      <a class="list-group-item list-group-item-action bg-light" (click)="openDialogForCreateSubject()"  *ngIf="user.role.name=='TEACHER'">Create subject</a>
-      <a class="list-group-item list-group-item-action bg-light" (click)="openDialogForEditProfile()">Edit profile</a>
+      <a class="list-group-item list-group-item-action bg-light" (click)="openDialogForCreateSubject()"  *ngIf="user.role.name=='TEACHER'">{{ 'ACTION.CREATE_SUBJECT' | translate }}</a>
+      <a class="list-group-item list-group-item-action bg-light" (click)="openDialogForEditProfile()">{{ 'ACTION.EDIT_PROFILE' | translate }}</a>
+      <mat-select [(value)] = "selectedLang" (selectionChange)="changeLocale($event.value)">
+        <mat-label>{{ 'LANGUAGE_TAG.NAME' | translate }}</mat-label>
+        <mat-option value="ru">{{ 'LANGUAGE_TAG.RUSSIAN' | translate }}</mat-option>
+        <mat-option value="en">{{ 'LANGUAGE_TAG.ENGLISH' | translate }}</mat-option>
+      </mat-select>
     </div>
   </div>
   <!-- /#sidebar-wrapper -->
 
   <!-- Page Content -->
   <div id="page-content-wrapper">
-    <app-navbar (show)="toggleShow($event)"></app-navbar>
+    <app-navbar [locale]="selectedLang"  (show)="toggleShow($event)"></app-navbar>
         <mat-form-field id="filter">
-          <mat-label>Filter</mat-label>
+          <mat-label>{{ 'ACTION.FILTER' | translate }}</mat-label>
           <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium">
         </mat-form-field>
 
@@ -26,30 +31,30 @@
           <mat-table mat-table [dataSource]="dataSource" matSort>
 
             <ng-container matColumnDef="discipline">
-              <mat-header-cell *matHeaderCellDef mat-sort-header> Discipline</mat-header-cell>
+              <mat-header-cell *matHeaderCellDef mat-sort-header> {{ 'SUBJECTS.COLUMNS.DISCIPLINE' | translate }}</mat-header-cell>
               <mat-cell mat-cell *matCellDef="let element">
                 {{element.discipline}}
               </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="group">
-              <mat-header-cell *matHeaderCellDef mat-sort-header> Group</mat-header-cell>
+              <mat-header-cell *matHeaderCellDef mat-sort-header> {{ 'SUBJECTS.COLUMNS.GROUP' | translate }}</mat-header-cell>
               <mat-cell mat-cell *matCellDef="let element">
                 {{element.group}}
               </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="actions">
-              <mat-header-cell *matHeaderCellDef>   Actions</mat-header-cell>
+              <mat-header-cell *matHeaderCellDef> {{ 'SUBJECTS.COLUMNS.ACTION' | translate }} </mat-header-cell>
               <mat-cell *matCellDef="let row">
-                <button mat-icon-button matTooltip="Click to Edit" class="iconbutton" color="primary" (click)="openDialogForUpdateSubject(row)" *ngIf="user.role.name=='TEACHER'">
+                <button mat-icon-button matTooltip="{{ 'ACTION.CLICK_TO_EDIT' | translate }}" class="iconbutton" color="primary" (click)="openDialogForUpdateSubject(row)" *ngIf="user.role.name=='TEACHER'">
                   <mat-icon aria-label="Edit">edit</mat-icon>
                 </button>
-                <button mat-icon-button matTooltip="Click to Delete" class="iconbutton" color="warn" (click)="delete(row)"  *ngIf="user.role.name=='TEACHER'">
+                <button mat-icon-button matTooltip="{{ 'ACTION.CLICK_TO_DELETE' | translate }}" class="iconbutton" color="warn" (click)="delete(row)"  *ngIf="user.role.name=='TEACHER'">
                   <mat-icon aria-label="Delete">delete</mat-icon>
                 </button>
 
-                <button mat-icon-button matTooltip="Click to open details" class="iconbutton" color="info" (click)="clickOnRow(row)">
+                <button mat-icon-button matTooltip="{{ 'ACTION.CLICK_TO_DETAILS' | translate }}" class="iconbutton" color="info" (click)="clickOnRow(row)">
                   <mat-icon aria-label="menu">menu</mat-icon>
                 </button>
               </mat-cell>

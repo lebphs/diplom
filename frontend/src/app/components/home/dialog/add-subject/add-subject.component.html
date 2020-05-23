@@ -1,25 +1,29 @@
-<h1 mat-dialog-title>Add Subject</h1>
+<h1 mat-dialog-title>{{ 'ACTION.CREATE_SUBJECT' | translate }}</h1>
 
 <mat-dialog-content [formGroup]="form">
 
   <mat-form-field>
-    <input matInput placeholder="Name" formControlName="name"/>
-    <mat-error *ngIf="form.get('name').errors?.required">Поле Name не может быть пустым. </mat-error>
-    <mat-error *ngIf="form.get('name').errors?.minlength || form.get('name').errors?.maxlength">Введите корректный Name (от 2 до 50 символов). </mat-error>
+    <input matInput placeholder="{{ 'SUBJECTS.NAME' | translate }}" formControlName="name"/>
+    <mat-error *ngIf="form.get('name').errors?.required">
+      {{ 'SUBJECTS.NAME' | translate }} {{ 'ERROR_MESSAGES.EMPTY_FIELD' | translate }}
+    </mat-error>
+    <mat-error *ngIf="form.get('name').errors?.minlength || form.get('name').errors?.maxlength">
+      {{ 'SUBJECTS.NAME' | translate }} {{ 'ERROR_MESSAGES.INCORRECT_LENGTH' | translate }}
+    </mat-error>
   </mat-form-field>
 
   <mat-form-field class="example-full-width">
-    <mat-label>Choose a group...</mat-label>
+    <mat-label>{{ 'SIGN_IN.INPUT.GROUP' | translate }}</mat-label>
     <mat-select formControlName="group">
       <mat-option [value]="group" *ngFor="let group of groups">{{group.name}}
       </mat-option>
     </mat-select>
-    <mat-error *ngIf="form.get('group').errors?.required">Выберите одну из групп </mat-error>
+<!--    <mat-error *ngIf="form.get('group').errors?.required">Выберите одну из групп </mat-error>-->
   </mat-form-field>
 
 </mat-dialog-content>
 
 <mat-dialog-actions align="end">
-  <button mat-button mat-dialog-close>Close</button>
-  <button mat-button mat-dialog-close cdkFocusInitial (click)="save()">Add</button>
+  <button mat-button mat-dialog-close>{{ 'ACTION.CLOSE' | translate }}</button>
+  <button mat-button mat-dialog-close cdkFocusInitial (click)="save()">{{ 'ACTION.ADD' | translate }}</button>
 </mat-dialog-actions>

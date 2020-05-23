@@ -14,19 +14,25 @@
     </div>
     <div class="list-group list-group-flush">
       <a class="list-group-item list-group-item-action bg-light" (click)="openDialogForCreateLesson()"
-         *ngIf="user.role.name=='TEACHER'">Create lesson</a>
-      <a class="list-group-item list-group-item-action bg-light" (click)="openDialogForEditProfile()">Edit profile</a>
-      <a class="list-group-item list-group-item-action bg-light" (click)="exportToExcel()">Export</a>
+         *ngIf="user.role.name=='TEACHER'">{{ 'ACTION.ADD_LESSON' | translate }}</a>
+      <a class="list-group-item list-group-item-action bg-light"
+         (click)="openDialogForEditProfile()">{{ 'ACTION.EDIT_PROFILE' | translate }}</a>
+      <a class="list-group-item list-group-item-action bg-light"
+         (click)="exportToExcel()">{{ 'ACTION.EXPORT' | translate }}</a>
+        <mat-select [(value)]="selectedLang" (selectionChange)="changeLocale($event.value)">
+          <mat-option value="ru">{{ 'LANGUAGE_TAG.RUSSIAN' | translate }}</mat-option>
+          <mat-option value="en">{{ 'LANGUAGE_TAG.ENGLISH' | translate }}</mat-option>
+        </mat-select>
     </div>
   </div>
   <!-- /#sidebar-wrapper -->
 
   <!-- Page Content -->
   <div id="page-content-wrapper">
-    <app-navbar (show)="toggleShow($event)"></app-navbar>
+    <app-navbar [locale]="selectedLang" (show)="toggleShow($event)"></app-navbar>
 
     <mat-form-field id="filter">
-      <mat-label>Filter</mat-label>
+      <mat-label>{{ 'ACTION.FILTER' | translate }}</mat-label>
       <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium">
     </mat-form-field>
     <div class="mat-elevation-z8 data-table table">
@@ -51,7 +57,7 @@
         </ng-container>
 
         <ng-container matColumnDef="firstNameHeader">
-          <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2">First Name</th>
+          <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2"> {{ 'JOURNAL.COLUMNS.FIRST_NAME' | translate }}</th>
         </ng-container>
 
 
@@ -63,13 +69,13 @@
         </ng-container>
 
         <ng-container matColumnDef="lastNameHeader">
-          <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2">Last Name</th>
+          <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2">{{ 'JOURNAL.COLUMNS.LAST_NAME' | translate }}</th>
         </ng-container>
 
         <div *ngFor="let day of days">
 
           <ng-container matColumnDef="{{day}}_mark">
-            <th mat-header-cell *matHeaderCellDef> Mark</th>
+            <th mat-header-cell *matHeaderCellDef> {{ 'JOURNAL.COLUMNS.MARK' | translate }}</th>
             <td mat-cell *matCellDef="let element;let index = index">
               <editable (update)="updateField(element, index, day + '_mark')">
                 <ng-template viewMode>
@@ -85,7 +91,7 @@
           </ng-container>
 
           <ng-container matColumnDef="{{day}}_truancy">
-            <th mat-header-cell *matHeaderCellDef> Truancy</th>
+            <th mat-header-cell *matHeaderCellDef> {{ 'JOURNAL.COLUMNS.TRUANCY' | translate }} </th>
             <td mat-cell *matCellDef="let element;let index = index">
               <editable (update)="updateField(element, index, day + '_truancy')">
                 <ng-template viewMode>
@@ -108,14 +114,14 @@
         <div>
 
           <ng-container matColumnDef="mark">
-            <th mat-header-cell *matHeaderCellDef> Mark</th>
+            <th mat-header-cell *matHeaderCellDef> {{ 'JOURNAL.COLUMNS.MARK' | translate }}</th>
             <td mat-cell *matCellDef="let element;let index = index">
               {{getAvgMarks(element)}}
             </td>
           </ng-container>
 
           <ng-container matColumnDef="truancy">
-            <th mat-header-cell *matHeaderCellDef> Truancy</th>
+            <th mat-header-cell *matHeaderCellDef> {{ 'JOURNAL.COLUMNS.TRUANCY' | translate }}</th>
             <td mat-cell *matCellDef="let element;let index = index">
               {{getAllTruancy(element)}}
             </td>

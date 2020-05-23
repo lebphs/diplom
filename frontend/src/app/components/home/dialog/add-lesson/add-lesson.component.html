@@ -1,9 +1,9 @@
-<h1 mat-dialog-title>Add lesson</h1>
+<h1 mat-dialog-title>{{ 'ACTION.ADD_LESSON' | translate }}</h1>
 
 <mat-dialog-content [formGroup]="form">
 
   <mat-form-field>
-    <input matInput [matDatepicker]="myDatepicker" placeholder="Class date" formControlName="lessonDate">
+    <input matInput [matDatepicker]="myDatepicker" placeholder="{{ 'JOURNAL.CLASS_DATE' | translate }}" formControlName="lessonDate">
     <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
     <mat-datepicker #myDatepicker></mat-datepicker>
   </mat-form-field>
@@ -11,6 +11,6 @@
 </mat-dialog-content>
 
 <mat-dialog-actions align="end">
-  <button mat-button mat-dialog-close>Close</button>
-  <button mat-button mat-dialog-close cdkFocusInitial (click)="save()">Add</button>
+  <button mat-button mat-dialog-close>{{ 'ACTION.CLOSE' | translate }}</button>
+  <button mat-button mat-dialog-close cdkFocusInitial (click)="save()">{{ 'ACTION.ADD' | translate }}</button>
 </mat-dialog-actions>

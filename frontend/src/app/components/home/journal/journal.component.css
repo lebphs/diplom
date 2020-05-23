@@ -78,4 +78,9 @@ th.mat-header-cell, td.mat-cell {
 #page-content-wrapper{
   padding: 10px;
 }
-
+mat-select{
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 12px;
+  padding-top: 12px;
+}

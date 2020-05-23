@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {JournalService} from "../../../services/journal.service";
 import {Journal} from "../../../models/journal.model";
@@ -13,8 +13,8 @@ import {AddLessonComponent} from "../dialog/add-lesson/add-lesson.component";
 import {EditProfileComponent} from "../dialog/edit-profile/edit-profile.component";
 import {MatPaginator} from "@angular/material/paginator";
 import {MatSort} from "@angular/material/sort";
-import * as XLSX from 'xlsx';
 import {FileService} from "../../../services/file.service";
+import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-journal',
@@ -22,6 +22,9 @@ import {FileService} from "../../../services/file.service";
   styleUrls: ['./journal.component.css']
 })
 export class JournalComponent implements OnInit {
+
+  @Input()
+  selectedLang: string = "ru";
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
@@ -48,6 +51,7 @@ export class JournalComponent implements OnInit {
     private fileService: FileService,
     private journalService: JournalService,
     private userService: UserService,
+    private translateService: TranslateService,
     private activatedRoute: ActivatedRoute,
     public datepipe: DatePipe,
     public dialog: MatDialog,
@@ -58,7 +62,8 @@ export class JournalComponent implements OnInit {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
     this.user = JSON.parse(window.localStorage.getItem('user'));
-
+    this.selectedLang = window.localStorage.getItem('locale');
+    this.translateService.use(this.selectedLang);
     this.subjectId = this.activatedRoute.snapshot.params['subjectId'];
     this.groupId = this.activatedRoute.snapshot.params['groupId'];
     this.loadData();
@@ -267,7 +272,7 @@ export class JournalComponent implements OnInit {
         n++;
       }
     });
-    return n != 0 ? Math.round(sum/n * 100) / 100 : 0;
+    return n != 0 ? Math.round(sum / n * 100) / 100 : 0;
   }
 
   getAllTruancy(element: UserTable) {
@@ -286,15 +291,19 @@ export class JournalComponent implements OnInit {
   }
 
 
-  fileName= 'ExcelSheet.xlsx';
+  fileName = 'ExcelSheet.xlsx';
 
-  exportToExcel(): void
-  {
+  exportToExcel(): void {
     /* table id is passed over here */
     let element = document.getElementById('journalTable');
     this.fileService.exportToExcel(element);
 
   }
 
+  changeLocale(locale) {
+    window.localStorage.setItem('locale', locale);
+    this.selectedLang = locale;
+    return this.translateService.use(locale);
+  }
 
 }
