@@ -33,12 +33,18 @@ public class SubjectServiceImpl implements SubjectService {
         this.converter = converter;
     }
 
+    public List<Subject> getAllSubjects() {
+        RestTemplate restTemplate = new RestTemplate();
+        SubjectDTO[] subjectDTO = restTemplate.getForObject(backendServerUrl + userURL, SubjectDTO[].class);
+        List<SubjectDTO> subjectDTOList =  subjectDTO == null ? Collections.emptyList() : Arrays.asList(subjectDTO);
+        return subjectDTOList.stream().map(converter::toSubject).collect(Collectors.toList());
+    }
+
     public List<Subject> findByTeacherId(String teacherId) {
         RestTemplate restTemplate = new RestTemplate();
         SubjectDTO[] subjectDTO = restTemplate.getForObject(backendServerUrl + userURL + "?teacherId=" + teacherId, SubjectDTO[].class);
         List<SubjectDTO> subjectDTOList =  subjectDTO == null ? Collections.emptyList() : Arrays.asList(subjectDTO);
         return subjectDTOList.stream().map(converter::toSubject).collect(Collectors.toList());
-
     }
 
     public List<Subject> findByStudentId(String studentId) {

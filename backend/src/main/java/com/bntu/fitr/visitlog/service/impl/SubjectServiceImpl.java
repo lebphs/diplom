@@ -30,6 +30,10 @@ public class SubjectServiceImpl implements SubjectService {
         this.groupRepository = groupRepository;
     }
 
+    public List<Subjects> getAllSubjects() {
+        return (List<Subjects>) subjectRepository.findAll();
+    }
+
     public List<Subjects> getSubjectByTeacherId(String teacherId) {
         return subjectRepository.findByTeacherId(new Long(teacherId));
     }

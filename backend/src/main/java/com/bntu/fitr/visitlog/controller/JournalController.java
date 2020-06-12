@@ -3,10 +3,7 @@ package com.bntu.fitr.visitlog.controller;
 import com.bntu.fitr.visitlog.entity.Journal;
 import com.bntu.fitr.visitlog.service.JournalService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpMethod;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
@@ -34,5 +31,10 @@ public class JournalController {
     @PutMapping
     public Journal updateJournal(@RequestBody Journal journal){
         return journalService.updateJournal(journal);
+    }
+
+    @DeleteMapping("subject/{subjectId}/date/{date}")
+    public void deleteJournal(@PathVariable String subjectId, @PathVariable String date){
+        journalService.deleteJournal(subjectId, date);
     }
 }

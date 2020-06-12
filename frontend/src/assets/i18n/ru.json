@@ -52,6 +52,12 @@
     },
     "CLASS_DATE": "Дата занятия"
   },
+  "ADMINISTRATOR": {
+    "COLUMNS": {
+      "LOGIN": "Логин"
+    },
+    "GROUP_NUMBER": "GROUP_NUMBER"
+  },
   "ERROR_MESSAGES": {
     "EMPTY_FIELD": " не может быть пустым.",
     "INCORRECT_LENGTH": " ввели некорректно, неоходимо (от 3 до 50 символов)"
@@ -65,6 +71,8 @@
     "EDIT_PROFILE": "Редактировать профиль",
     "CREATE_SUBJECT": "Создать предмет",
     "ADD_LESSON": "Добавить урок",
+    "DELETE_LESSON": "Удалить урок",
+    "ADD_GROUP": "Добавить группу",
     "HOME": "Домой",
     "LOG_OUT": "Выйти",
     "EXPORT": "Экспортировать",

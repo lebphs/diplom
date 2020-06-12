@@ -52,6 +52,12 @@
     },
     "CLASS_DATE": "Class Date"
   },
+  "ADMINISTRATOR": {
+    "COLUMNS": {
+      "LOGIN": "Login"
+    },
+    "GROUP_NUMBER": "GROUP_NUMBER"
+  },
   "ERROR_MESSAGES": {
     "EMPTY_FIELD": " cannot be empty.",
     "INCORRECT_LENGTH": " entered incorrectly, necessary (from 3 to 50 characters)"
@@ -65,6 +71,8 @@
     "EDIT_PROFILE": "Edit profile",
     "CREATE_SUBJECT": "Create subject",
     "ADD_LESSON": "Add lesson",
+    "DELETE_LESSON": "Delete lesson",
+    "ADD_GROUP": "Add group",
     "HOME": "Home",
     "LOG_OUT": "Log out",
     "EXPORT": "Export",

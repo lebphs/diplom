@@ -1,4 +1,5 @@
-<h1 mat-dialog-title>{{ 'ACTION.ADD_LESSON' | translate }}</h1>
+<h1 mat-dialog-title *ngIf="title == 'Delete lesson'">{{ 'ACTION.DELETE_LESSON' | translate }}</h1>
+<h1 mat-dialog-title *ngIf="title == 'Add lesson'">{{ 'ACTION.ADD_LESSON' | translate }}</h1>
 
 <mat-dialog-content [formGroup]="form">
 

@@ -11,11 +11,15 @@ export class SubjectService {
   }
 
   public getSubjectByTeacherId(teacherId: string): Observable<Subject[]> {
-    return this.http.get<Subject[]>(this.baseUrl + "?teacherId=" + teacherId);
+    return this.http.get<Subject[]>(this.baseUrl + "/teacher/" + teacherId);
   }
 
   public getSubjectByStudentId(studentId: string): Observable<Subject[]> {
     return this.http.get<Subject[]>(this.baseUrl + "/student/" + studentId);
+  }
+
+  public getAllSubject(): Observable<Subject[]> {
+    return this.http.get<Subject[]>(this.baseUrl);
   }
 
   public createSubject(subject: Subject): Observable<Subject> {

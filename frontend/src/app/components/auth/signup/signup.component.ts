@@ -73,7 +73,7 @@ export class SignupComponent implements OnInit {
 
   changeOption(data){
     console.log(data);
-    this.isShow = data.name == "STUDENT";
+    this.isShow = data.name == "STUDENT" || data.name == "HEAD_STUDENT";
   }
 
   changeLocale(locale){

@@ -45,6 +45,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<Users> getStudentsByGroupId(String groupId){return  userRepository.findStudentsByGroupId(new Long(groupId));
+    public List<Users> getStudentsByGroupId(String groupId){
+        return  userRepository.findStudentsByGroupId(new Long(groupId));
     }
 }

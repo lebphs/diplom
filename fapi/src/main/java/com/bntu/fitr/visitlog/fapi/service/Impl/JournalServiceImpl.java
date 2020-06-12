@@ -55,4 +55,11 @@ public class JournalServiceImpl implements JournalService {
         JournalDTO journalDTO =  restTemplate.exchange(backendServerUrl + userURL, HttpMethod.PUT, new HttpEntity<>(converter.toJournalDTO(journal)), JournalDTO.class).getBody();
         return converter.toJournal(journalDTO);
     }
+
+
+    @Override
+    public void deleteJournal(String subjectId, String date){
+        RestTemplate restTemplate = new RestTemplate();
+        restTemplate.delete(backendServerUrl + userURL + "/subject/" + subjectId + "/date/" + date);
+    }
 }

@@ -1,0 +1,20 @@
+<h1 mat-dialog-title>{{ 'ACTION.ADD_GROUP' | translate }}</h1>
+
+<mat-dialog-content [formGroup]="form">
+
+  <mat-form-field>
+    <input matInput placeholder="{{ 'ADMINISTRATOR.GROUP_NUMBER' | translate }}" formControlName="number"/>
+    <mat-error *ngIf="form.get('number').errors?.required">
+      {{ 'ADMINISTRATOR.GROUP_NUMBER' | translate }} {{ 'ERROR_MESSAGES.EMPTY_FIELD' | translate }}
+    </mat-error>
+    <mat-error *ngIf="form.get('number').errors?.minlength || form.get('number').errors?.maxlength">
+      {{ 'ADMINISTRATOR.GROUP_NUMBER' | translate }} {{ 'ERROR_MESSAGES.INCORRECT_LENGTH' | translate }}
+    </mat-error>
+  </mat-form-field>
+
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>{{ 'ACTION.CLOSE' | translate }}</button>
+  <button mat-button mat-dialog-close cdkFocusInitial (click)="save()">{{ 'ACTION.ADD' | translate }}</button>
+</mat-dialog-actions>

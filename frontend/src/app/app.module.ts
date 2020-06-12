@@ -34,6 +34,8 @@ import { EditProfileComponent } from './components/home/dialog/edit-profile/edit
 import {FileService} from "./services/file.service";
 import {MissingTranslationHandler, TranslateLoader, TranslateModule} from "@ngx-translate/core";
 import {TranslateHttpLoader} from "@ngx-translate/http-loader";
+import { AdminPageComponent } from './components/home/admin-page/admin-page.component';
+import { AddGroupComponent } from './components/home/dialog/add-group/add-group.component';
 
 export function HttpLoaderFactory(http: HttpClient): TranslateLoader {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -58,7 +60,9 @@ export function HttpLoaderFactory(http: HttpClient): TranslateLoader {
     NavbarComponent,
     AddSubjectComponent,
     UpdateSubjectComponent,
-    EditProfileComponent
+    EditProfileComponent,
+    AdminPageComponent,
+    AddGroupComponent
   ],
   imports: [
     BrowserModule,
@@ -76,7 +80,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateLoader {
         deps: [HttpClient],
       },
       missingTranslationHandler: { provide: MissingTranslationHandler, useClass: MissingTranslationService },
-      useDefaultLang: false,
+      useDefaultLang: true,
     })
   ],
   providers: [

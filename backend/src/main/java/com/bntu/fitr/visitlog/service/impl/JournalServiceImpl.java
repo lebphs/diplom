@@ -63,4 +63,9 @@ public class JournalServiceImpl implements JournalService {
         }
         return journalRepository.save(journal);
     }
+
+    @Override
+    public void deleteJournal(String subjectId, String date){
+        journalRepository.deleteAllByClassDateAndSubjectId(subjectId, date);
+    }
 }

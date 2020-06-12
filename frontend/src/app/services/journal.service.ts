@@ -23,4 +23,8 @@ export class JournalService {
     return this.http.post<Journal>(this.baseUrl, journal);
   }
 
+  public delete(subject: string, date: string): Observable<Journal[]> {
+    return this.http.delete<Journal[]>(this.baseUrl + "/subject/" + subject + "/date/" + date);
+  }
+
 }

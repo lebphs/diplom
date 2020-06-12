@@ -17,7 +17,12 @@ public class SubjectController {
     }
 
     @GetMapping
-    public List<Subjects> getSubjectByTeacherId(@RequestParam String teacherId) {
+    public List<Subjects> getAllSubjects() {
+        return subjectService.getAllSubjects();
+    }
+
+    @GetMapping("teacher/{teacherId}")
+    public List<Subjects> getSubjectByTeacherId(@PathVariable String teacherId) {
         return subjectService.getSubjectByTeacherId(teacherId);
     }
 

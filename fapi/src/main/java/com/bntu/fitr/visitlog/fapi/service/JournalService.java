@@ -11,4 +11,6 @@ public interface JournalService {
     Journal updateJournal(Journal journalDTO);
 
     Journal createJournal(Journal journalDTO);
+
+    void deleteJournal(String subjectId, String date);
 }

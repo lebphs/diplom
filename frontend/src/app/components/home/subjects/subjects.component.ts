@@ -71,7 +71,7 @@ export class SubjectsComponent implements OnInit {
         this.dataSource.data = subject as Subject[];
       })
     }
-    if(this.user.role.name == "STUDENT"){
+    if(this.user.role.name == "STUDENT" || this.user.role.name == "HEAD_STUDENT"){
       this.subjectService.getSubjectByStudentId(this.user.id).subscribe(subject => {
         this.dataSource.data = subject as Subject[];
       })

@@ -4,14 +4,16 @@ import {LoginComponent} from './components/auth/login/login.component';
 import {SignupComponent} from './components/auth/signup/signup.component';
 import {SubjectsComponent} from "./components/home/subjects/subjects.component";
 import {JournalComponent} from "./components/home/journal/journal.component";
+import {AdminPageComponent} from "./components/home/admin-page/admin-page.component";
 
 const routes: Routes = [
-  // { path: '', pathMatch: 'full', redirectTo: 'login' },
+  { path: '', pathMatch: 'full', redirectTo: 'login' },
   {path: 'login', component: LoginComponent},
   {path: 'register', component: SignupComponent},
   {path: 'subjects', component: SubjectsComponent, },
+  {path: 'admin-page', component: AdminPageComponent},
   {path:'subjects/:subjectId/group/:groupId',component:JournalComponent},
-  {path: '', component: SubjectsComponent}
+  // {path: '', component: SubjectsComponent}
 ];
 
 @NgModule({

@@ -6,6 +6,9 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 public interface SubjectService {
+
+    List<Subject> getAllSubjects();
+
     List<Subject> findByTeacherId(String teacherId);
 
     List<Subject> findByStudentId(String studentId);

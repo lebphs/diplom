@@ -4,7 +4,6 @@ import {UserService} from "../../../services/user.service";
 import {Router} from "@angular/router";
 import {User} from "../../../models/user.model";
 import {TranslateService} from "@ngx-translate/core";
-import {environment} from "../../../../environments/environment";
 
 @Component({
   selector: 'app-login',
@@ -39,8 +38,8 @@ export class LoginComponent implements OnInit {
         if (user.password === formData.password) {
           window.localStorage.setItem('user', JSON.stringify(user));
           console.log(user.role.name);
-          if (user.role.name === 'STUDENTS') {
-            this.router.navigate(['/home']);
+          if (user.role.name === 'ADMINISTRATOR') {
+            this.router.navigate(['/admin-page']);
           } else {
             this.router.navigate(['/subjects']);
           }
@@ -49,7 +48,7 @@ export class LoginComponent implements OnInit {
       });
   }
 
-  changeLocale(locale){
+  changeLocale(locale) {
     window.localStorage.setItem('locale', locale);
     return this.translateService.use(locale);
   }

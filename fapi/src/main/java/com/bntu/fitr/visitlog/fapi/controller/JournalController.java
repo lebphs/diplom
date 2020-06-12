@@ -33,4 +33,10 @@ public class JournalController {
     public Journal updateJournal(@RequestBody Journal journal) {
         return journalService.updateJournal(journal);
     }
+
+    @DeleteMapping("subject/{subjectId}/date/{date}")
+    public List<Journal> deleteJournal(@PathVariable String subjectId, @PathVariable String date) {
+        journalService.deleteJournal(subjectId, date);
+        return null;
+    }
 }

@@ -72,7 +72,7 @@ export class JournalComponent implements OnInit {
   }
 
   loadData() {
-    if (this.user.role.name == "TEACHER")
+    if (this.user.role.name == "TEACHER" || this.user.role.name == "HEAD_STUDENT")
       this.userService.getStudentByGroupId(this.groupId)
         .subscribe(student => {
           this.journalService.getJournalBySubjectId(this.subjectId)
@@ -207,10 +207,9 @@ export class JournalComponent implements OnInit {
   openDialogForCreateLesson() {
     const dialogConfig = new MatDialogConfig();
 
-    console.log("test");
     dialogConfig.data = {
       id: 1,
-      title: 'Angular For Beginners'
+      title: 'Add lesson'
     };
 
     const dialogRef = this.dialog.open(AddLessonComponent, dialogConfig);
@@ -219,6 +218,26 @@ export class JournalComponent implements OnInit {
       date => {
         if (date instanceof Date) {
           this.add(date, null, null, null);
+        }
+      }
+    );
+  }
+
+
+  openDialogForDeleteLesson() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data = {
+      id: 1,
+      title: 'Delete lesson'
+    };
+
+    const dialogRef = this.dialog.open(AddLessonComponent, dialogConfig);
+
+    dialogRef.afterClosed().subscribe(
+      date => {
+        if (date instanceof Date) {
+
+          this.journalService.delete(this.subjectId, this.convertDateToString(date)).subscribe();
         }
       }
     );
